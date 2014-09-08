@@ -1,0 +1,53 @@
+F. Godmom clone Pseudo-code
+
+Game Tic
+	Check input -- avoid threading issues by using key polling each tic instead of event listening
+		Perform Fairy action based on input
+	Move Crabs
+	Tic on transformation times
+
+Fairy Action
+	If unsupported
+		Fall
+	Else do one of
+		Scan
+		Zap
+		Move
+		-- Can add other arbitrary Actions later
+		Wait -- do nothing (default)
+
+Move Crabs
+	For each Crab
+		If unsupported
+			Fall
+		Else
+			Get AI command
+			Attempt AI-given action
+
+Get Crab AI Action
+	If at edge or stopped
+		Set Direction towards Fairy
+	If supported in Direction and able to move in Direction
+		Move in Direction
+	Else wait
+
+Transformation Tic
+	For each Transformed
+		Decrement remaining time
+		If remaining time is zero
+			Transform back
+
+Fall
+	Change vertical acceleration downward by gravitational factor
+	Move distance equal to current acceleration
+
+Scan
+	Set Pattern to next Block in Fairy's Direction
+
+Zap
+	Transform next Block in Fairy's Direction to Pattern
+
+Move
+	For each object in path
+		Perform interaction until blocked or path complete
+

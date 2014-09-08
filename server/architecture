@@ -1,0 +1,40 @@
+TODO: template redo; see /home/mark/.config/refola/server/data/wiki/tmpl/
+TODO: Decide more clearly what I want the server to do, and re-architect accordingly.
+
+Packages:
+core	non-alphanumeric URL/filename sanitizing, data access, and basic servers
+wiki	templated pages to access textual data
+file	upload, download, and browse files
+
+Package relationships:
+User	Used		Use
+core	regexp		finding & replacing non-alphanumeric chars
+core	os		os.File object manipulation and os.Error returning
+core	io/ioutil	file read/write and directory listing
+core	http		parsing and starting http.HandlerFunc functions
+core	template	handling templates for servers
+wiki	http		http.HandlerFunc for wiki page accessing
+wiki	io		in-progress WikiFormatter for wiki markup
+wiki	os		os.Error handling
+wiki	template	WikiFormatter
+wiki	core		data storage
+file	os		os.Error handling
+file	core		data storage
+
+Commands:
+file	Run the file server.
+serve	Run all servers made.
+wiki	Run the wiki server.
+
+Package use in commands
+Command	Package used	Use
+file	core		Core server stuff
+file	file		File server stuff
+serve	core		Core server stuff
+serve	file		File server stuff
+serve	wiki		Wiki server stuff
+wiki	core		Core server stuff
+wiki	wiki		Wiki server stuff
+
+core adjustment:
+Move template management to core as part of the Server type. Then a list of templates to parse will be passed to NewServer(), which will then safely parse them and return an error if it didn't work. Also, changing functions to act on Server means the server prefix, etc won't have to be passed anymore because they're part of the server.

@@ -1,0 +1,5 @@
+fgm:
+Main package including everything having to do with fairies, crabs, etc.
+
+engine:
+Generalized 2D game engine that handles grids, objects, collisions, etc.

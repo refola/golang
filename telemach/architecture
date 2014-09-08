@@ -1,0 +1,11 @@
+how the pieces of this telemach package (should) fit together:
+
+telepathy cycle:
+* functions in input.go get data from telemach via some audio package and pass it in chunks via channels
+* functions in fft.go do (inverse) Fast Fourier Transforms on chunks of data, possibly ignoring frequencies above a certain level
+* functions in transcode.go filter known/predicted noise and amplify what's left to be about X% of some empirically-determined maximum software amplitude corresponding to the hardware's safety limit of about 2 milliamps. this might use fft.go extensively.
+* functions in output.go take transcoded, noise-reduced, amplitude-amplified data and send it to the telemach via some audio package
+
+analysis tools:
+* functions in display.go use some standard package to output current status, e.g., input summaries, overall effects of transcoding, and output summaries
+

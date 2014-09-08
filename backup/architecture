@@ -1,0 +1,49 @@
+Architecture for Refola Backup automated config-based rsync frontend
+
+Requirements: This should match everything described as tested by config/debug/README.
+	Backup everything applicable with a single command
+	Minimize effort to change what's backed up and to where
+	Show what's being done
+	Done?: Order backups such that A goes first if A affects B
+	TODO: Continue on backup program errors and report at the end which backups had which errors
+	TODO: Use programs other than rsync (null backup, builtin, etc?)
+	TODO: Automatically run certain commands before certain backups (e.g., "sudo chown -R g+u /home/gaming"...)
+	TODO: Implement semiautomatic moving of stuff before backups
+	TODO: Read output of backup program and parse for special cases (nothing done -> suppress output, special file -> check for symlink and report separately, etc)
+	TODO: Set up places so paths don't need to be deplicated between origins and destinations.
+
+Program:
+	get config stuff -- getconfig.go
+		decide which file to get from
+		read from file
+		marshal into data structures
+		TODO: replace config vars with values
+	parse config stuff -- decide.go
+		find all valid origin-destination pairs
+		build rsync parameters for each pair
+		TODO: order backups such that rerunning the program won't have anything to backup
+	run backup program -- backup.go
+		Prepare given args for rsync
+		Run rsync with args
+
+Config:
+	rsync option names → [] rsync options -- "main" always used, others per-FS
+	file system → rsync option names
+	[] origins
+		name -- for display and destination subfolder name
+		from [] locations
+		rules
+			backup types → [] rsync rules files -- see note in destinations
+	[] destinations
+		name -- for display
+		to [] locations
+		types [] backup types -- only same-typed origin/dest pairs are used
+		file system
+
+Config vars (wish list):
+	[user] -- the OS-defined name of the running user
+	[home] -- the OS-defined home directory of the running user
+	[home=user] -- the OS-defined home directory of user
+	[count=#] -- use up # numbered subfolders for backing up from origin or to destination, rotating according to stored data in config/rotate.json
+	[.] -- relative location from the config folder -- for debugging
+	[.name] -- location relative to config-defined name

@@ -1,0 +1,22 @@
+F. Godmom Object Hierarchy
+
+=== Board ===
+Add(Drawable)
+Remove(Drawable)
+GetAt(Coords) Drawable
+-----
+contents []Drawable
+locations [][][]Drawable
+
+=== Drawable ===
+Image() BLOB -- some sort of undecided data structure holding a translucency-enabled image
+Location() Coords
+Size() Coords
+
+=== Coords ===
+X - int
+Y - int
+Z - int -- used for stacking, but object interaction might be better
+
+=== Collectible: Drawable ===
+ActOn(Drawable)

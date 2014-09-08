@@ -1,0 +1,32 @@
+go-telemach (telepathy machine) and used library licenses
+
+Copyright (c) 2014 go-telemach contributors
+This Telemach program is licensed under the WTFPL, reproduced in "license.WTFPL".
+
+This software uses (or considered using (yes, I'm sentiomorphizing this software (yes, I'm generalizing anthropomorphism from human-like to sentience (yes, I'm using a lot of nested parentheses)))) code licensed under various conditions as follows.
+
+Project:	PortAudio
+Copyright:	Copyright (c) 1999-2011 Ross Bencina and Phil Burk
+License:	PortAudio license, V19
+License file:	license.PortAudio
+Citation:	http://www.portaudio.com/license.html
+
+Project:	portaudio-go
+Copyright:	(inferred from change log) Copyright (c) 2011-2013 Gordon Klaus
+License:	MIT
+License file:	license.MIT
+Citation:	https://code.google.com/p/portaudio-go/
+		https://code.google.com/p/portaudio-go/source/list
+
+Project:	go-dsp/fft
+Copyright:	Copyright (c) 2011 Matt Jibson <matt.jibson@gmail.com>
+License:	ISC License (unnamed in citation, but text matches)
+License file:	license.ISC
+Citation:	https://github.com/mjibson/go-dsp/blob/master/fft/fft.go
+
+Project:	emokit
+Copyright:	Copyright (c) 2010, Daeken and Skadge
+		Copyright (c) 2011-2012, OpenYou Organization (http://openyou.org)
+License:	ISC License (unnamed in citation, but text matches)
+License file:	license.ISC
+Citation:	https://github.com/qdot/emokit/blob/master/src/emokit.c
