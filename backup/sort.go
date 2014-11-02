@@ -3,7 +3,7 @@
 package backup
 
 import (
-	"code.google.com/p/refola/util"
+	"github.com/refola/golang/util"
 	"fmt"
 )
 

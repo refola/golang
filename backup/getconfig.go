@@ -3,7 +3,7 @@
 package backup
 
 import (
-	"code.google.com/p/refola/file"
+	"github.com/refola/golang/file"
 	//"os/user" // TODO: Use this to replace {user} and {home} in future configs
 )
 
