@@ -56,7 +56,7 @@ func clickNCmd(n int, server string) *exec.Cmd {
 
 // Runs cmd.Run() repeatedly with a given delay between runnings after true is received on status and stops when false is received. Stops running when channel is closed.
 func cmdRepeater(delay time.Duration, status <-chan bool, cmdBuilder func() *exec.Cmd) {
-	defer func() { recover(); fmt.Println("cmdRepeater exiting: channel closed") }() 
+	defer func() { recover(); fmt.Println("cmdRepeater exiting: channel closed") }()
 	active := <-status
 	for {
 		if len(status) > 0 {
@@ -113,7 +113,7 @@ func main() {
 
 	// make clicker
 	ch := make(chan bool, 1)
-	go cmdRepeater(time.Millisecond * time.Duration(*delayms), ch, func() *exec.Cmd { return clickNCmd(5, *xserver) })
+	go cmdRepeater(time.Millisecond*time.Duration(*delayms), ch, func() *exec.Cmd { return clickNCmd(5, *xserver) })
 
 	// finish current newpix
 	curpix := *startpix
@@ -125,8 +125,8 @@ func main() {
 	}
 
 	// do other newpix
-	stopAt := *startpix+*numNewpix
-	if *numNewpix==0 {
+	stopAt := *startpix + *numNewpix
+	if *numNewpix == 0 {
 		stopAt = 1000000 // At one hour per newpix, this should take over 100 years to stop.
 	}
 	for curpix++; curpix < stopAt; curpix++ {

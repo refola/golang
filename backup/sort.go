@@ -3,8 +3,8 @@
 package backup
 
 import (
-	"github.com/refola/golang/util"
 	"fmt"
+	"github.com/refola/golang/util"
 )
 
 // Type for slice of BackupConfigs for use with a (topological) sorting algorithm

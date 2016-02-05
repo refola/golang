@@ -18,4 +18,3 @@ func Backup(cfg BackupConfig) error {
 	fmt.Printf("\n\n\nBacking up %s to %s.\n", cfg.FromName, cfg.ToName)
 	return rsync(cfg)
 }
-

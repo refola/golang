@@ -3,8 +3,8 @@
 package main
 
 import (
-	"github.com/refola/golang/backup"
 	"fmt"
+	"github.com/refola/golang/backup"
 	"os"
 )
 
